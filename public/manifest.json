@@ -1,6 +1,6 @@
 {
-  "short_name": "NCC",
-  "name": "Coder Clone NFT",
+  "short_name": "FTZ",
+  "name": "Faceless Totz",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo.gif",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "logo.gif",
       "type": "image/png",
       "sizes": "512x512"
     }

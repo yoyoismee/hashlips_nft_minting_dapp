@@ -1,6 +1,6 @@
 # Welcome to HashLips 👄
 
-![](https://github.com/HashLips/hashlips_nft_minting_dapp/blob/main/logo.png)
+![](https://github.com/HashLips/hashlips_nft_minting_dapp/blob/main/totz-cover.gif)
 
 All the code in these repos was created and explained by HashLips on the main YouTube channel.
 
@@ -74,7 +74,7 @@ Note: this dapp is designed to work with the intended NFT smart contract, that o
 Make sure you copy the contract ABI from remix and paste it in the `public/config/abi.json` file.
 (follow the youtube video if you struggle with this part).
 
-Now you will need to create and change 2 images and a gif in the `public/config/images` folder, `bg.png`, `example.gif` and `logo.png`.
+Now you will need to create and change 2 images and a gif in the `public/config/images` folder, `bg.png`, `example.gif` and `totz-cover.gif`.
 
 Next change the theme colors to your liking in the `public/config/theme.css` file.
 
@@ -89,8 +89,8 @@ Next change the theme colors to your liking in the `public/config/theme.css` fil
 }
 ```
 
-Now you will need to create and change the `public/favicon.ico`, `public/logo192.png`, and
-`public/logo512.png` to your brand images.
+Now you will need to create and change the `public/favicon.ico`, `public/logo.gif`, and
+`public/logo.gif` to your brand images.
 
 Remember to update the title and description the `public/index.html` file
 
