@@ -123,8 +123,8 @@ function App() {
   const claimNFTsMember = () => {
     let cost = 20000000000000000;
     let gasLimit = CONFIG.GAS_LIMIT;
-    let totalCostWei = String(cost);
-    let totalGasLimit = String(gasLimit);
+    let totalCostWei = String(cost * mintAmount);
+    let totalGasLimit = String(gasLimit * mintAmount);
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
@@ -156,8 +156,8 @@ function App() {
   const claimNFTsHolder = () => {
     let cost = 15000000000000000;
     let gasLimit = CONFIG.GAS_LIMIT;
-    let totalCostWei = String(cost);
-    let totalGasLimit = String(gasLimit);
+    let totalCostWei = String(cost * mintAmount);
+    let totalGasLimit = String(gasLimit * mintAmount);
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
@@ -237,6 +237,7 @@ function App() {
         style={{ padding: 24, backgroundColor: "var(--primary)" }}
         image={CONFIG.SHOW_BACKGROUND ? "/config/images/bg.png" : null}
       >
+
         {/* <StyledLogo alt={"logo"} src={"/config/images/totz-cover.gif"} /> */}
         <s.SpacerSmall />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
@@ -334,6 +335,37 @@ function App() {
                     >
                       {feedback}
                     </s.TextDescription>
+                    <s.Container ai={"center"} jc={"center"} fd={"row"}>
+                      <StyledRoundButton
+                        style={{ lineHeight: 0.4 }}
+                        disabled={claimingNft ? 1 : 0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          decrementMintAmount();
+                        }}
+                      >
+                        -
+                      </StyledRoundButton>
+                      <s.SpacerMedium />
+                      <s.TextDescription
+                        style={{
+                          textAlign: "center",
+                          color: "var(--accent-text)",
+                        }}
+                      >
+                        {mintAmount}
+                      </s.TextDescription>
+                      <s.SpacerMedium />
+                      <StyledRoundButton
+                        disabled={claimingNft ? 1 : 0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          incrementMintAmount();
+                        }}
+                      >
+                        +
+                      </StyledRoundButton>
+                    </s.Container>
                     <s.TextTitle
                       style={{ textAlign: "center", color: "var(--accent-text)" }}
                     >
