@@ -188,7 +188,13 @@
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
     "name": "buy",
     "outputs": [],
     "stateMutability": "payable",
@@ -227,7 +233,13 @@
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
     "name": "holderBuy",
     "outputs": [],
     "stateMutability": "payable",
@@ -291,7 +303,7 @@
   },
   {
     "inputs": [],
-    "name": "maxSupply",
+    "name": "maxBuy",
     "outputs": [
       {
         "internalType": "uint256",
@@ -304,6 +316,25 @@
   },
   {
     "inputs": [],
+    "name": "maxSupply",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
     "name": "memberBuy",
     "outputs": [],
     "stateMutability": "payable",
@@ -777,7 +808,13 @@
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
     "name": "whitelistBuy",
     "outputs": [],
     "stateMutability": "payable",
