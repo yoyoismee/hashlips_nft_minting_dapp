@@ -152,6 +152,39 @@ function App() {
       });
   };
 
+  const claimNFTsWhitelist = () => {
+    let cost = 0;
+    let gasLimit = CONFIG.GAS_LIMIT;
+    let totalCostWei = String(cost * mintAmount);
+    let totalGasLimit = String(gasLimit * mintAmount);
+    console.log("Cost: ", totalCostWei);
+    console.log("Gas limit: ", totalGasLimit);
+    setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
+    setClaimingNft(true);
+    blockchain.smartContract.methods
+      .whitelistBuy(mintAmount)
+      .send({
+        gasLimit: String(totalGasLimit),
+        to: CONFIG.CONTRACT_ADDRESS,
+        from: blockchain.account,
+        value: totalCostWei,
+      })
+      .once("error", (err) => {
+        console.log(err);
+        setFeedback("Sorry, something went wrong please try again later.");
+        setClaimingNft(false);
+      })
+      .then((receipt) => {
+        console.log(receipt);
+        setFeedback(
+          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`
+        );
+        setClaimingNft(false);
+        dispatch(fetchData(blockchain.account));
+      });
+  };
+
+
   ///////
   const claimNFTsHolder = () => {
     let cost = 15000000000000000;
@@ -399,6 +432,24 @@ function App() {
                         }}
                       >
                         {claimingNft ? "BUSY" : "BUY FOR MEMBER"}
+                      </StyledButton>
+                    </s.Container>
+                    <s.TextTitle
+                      style={{ textAlign: "center", color: "var(--accent-text)" }}
+                    >
+                      whitelist buy
+                    </s.TextTitle>
+
+                    <s.Container ai={"center"} jc={"center"} fd={"row"}>
+                      <StyledButton
+                        disabled={claimingNft ? 1 : 0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          claimNFTsWhitelist();
+                          getData();
+                        }}
+                      >
+                        {claimingNft ? "BUSY" : "BUY FOR Whitelist"}
                       </StyledButton>
                     </s.Container>
                   </>
