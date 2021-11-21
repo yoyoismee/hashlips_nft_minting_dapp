@@ -153,7 +153,7 @@ function App() {
   };
 
   const claimNFTsWhitelist = () => {
-    let cost = 0;
+    let cost = 20000000000000000;
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost * mintAmount);
     let totalGasLimit = String(gasLimit * mintAmount);
@@ -437,7 +437,7 @@ function App() {
                     <s.TextTitle
                       style={{ textAlign: "center", color: "var(--accent-text)" }}
                     >
-                      whitelist buy
+                      0.020 ETH for whitelist
                     </s.TextTitle>
 
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
