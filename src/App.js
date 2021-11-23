@@ -120,7 +120,7 @@ function App() {
     SHOW_BACKGROUND: false,
   });
   ////////
-  const claimNFTsMember = () => {
+  const claimNFTs = () => {
     let cost = 20000000000000000;
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost * mintAmount);
@@ -130,7 +130,7 @@ function App() {
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     setClaimingNft(true);
     blockchain.smartContract.methods
-      .memberBuy(mintAmount)
+      .buy(mintAmount)
       .send({
         gasLimit: String(totalGasLimit),
         to: CONFIG.CONTRACT_ADDRESS,
@@ -151,74 +151,6 @@ function App() {
         dispatch(fetchData(blockchain.account));
       });
   };
-
-  const claimNFTsWhitelist = () => {
-    let cost = 20000000000000000;
-    let gasLimit = CONFIG.GAS_LIMIT;
-    let totalCostWei = String(cost * mintAmount);
-    let totalGasLimit = String(gasLimit * mintAmount);
-    console.log("Cost: ", totalCostWei);
-    console.log("Gas limit: ", totalGasLimit);
-    setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
-    setClaimingNft(true);
-    blockchain.smartContract.methods
-      .whitelistBuy(mintAmount)
-      .send({
-        gasLimit: String(totalGasLimit),
-        to: CONFIG.CONTRACT_ADDRESS,
-        from: blockchain.account,
-        value: totalCostWei,
-      })
-      .once("error", (err) => {
-        console.log(err);
-        setFeedback("Sorry, something went wrong please try again later.");
-        setClaimingNft(false);
-      })
-      .then((receipt) => {
-        console.log(receipt);
-        setFeedback(
-          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`
-        );
-        setClaimingNft(false);
-        dispatch(fetchData(blockchain.account));
-      });
-  };
-
-
-  ///////
-  const claimNFTsHolder = () => {
-    let cost = 15000000000000000;
-    let gasLimit = CONFIG.GAS_LIMIT;
-    let totalCostWei = String(cost * mintAmount);
-    let totalGasLimit = String(gasLimit * mintAmount);
-    console.log("Cost: ", totalCostWei);
-    console.log("Gas limit: ", totalGasLimit);
-    setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
-    setClaimingNft(true);
-    blockchain.smartContract.methods
-      .holderBuy(mintAmount)
-      .send({
-        gasLimit: String(totalGasLimit),
-        to: CONFIG.CONTRACT_ADDRESS,
-        from: blockchain.account,
-        value: totalCostWei,
-      })
-      .once("error", (err) => {
-        console.log(err);
-        setFeedback("Sorry, something went wrong please try again later.");
-        setClaimingNft(false);
-      })
-      .then((receipt) => {
-        console.log(receipt);
-        setFeedback(
-          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`
-        );
-        setClaimingNft(false);
-        dispatch(fetchData(blockchain.account));
-      });
-  };
-
-  ///////
 
   const decrementMintAmount = () => {
     let newMintAmount = mintAmount - 1;
@@ -402,56 +334,21 @@ function App() {
                     <s.TextTitle
                       style={{ textAlign: "center", color: "var(--accent-text)" }}
                     >
-                      0.015 ETH for Faceless Holder and Artist
+                      0.02 ETH for Faceless
                     </s.TextTitle>
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <StyledButton
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
                           e.preventDefault();
-                          claimNFTsHolder();
+                          claimNFTs();
                           getData();
                         }}
                       >
-                        {claimingNft ? "BUSY" : "BUY FOR HOLDER"}
+                        {claimingNft ? "BUSY" : "BUY!"}
                       </StyledButton>
                     </s.Container>
-                    <s.TextTitle
-                      style={{ textAlign: "center", color: "var(--accent-text)" }}
-                    >
-                      0.020 ETH for Discord member
-                    </s.TextTitle>
 
-                    <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                      <StyledButton
-                        disabled={claimingNft ? 1 : 0}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          claimNFTsMember();
-                          getData();
-                        }}
-                      >
-                        {claimingNft ? "BUSY" : "BUY FOR MEMBER"}
-                      </StyledButton>
-                    </s.Container>
-                    <s.TextTitle
-                      style={{ textAlign: "center", color: "var(--accent-text)" }}
-                    >
-                      0.020 ETH for whitelist
-                    </s.TextTitle>
-
-                    <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                      <StyledButton
-                        disabled={claimingNft ? 1 : 0}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          claimNFTsWhitelist();
-                          getData();
-                        }}
-                      >
-                        {claimingNft ? "BUSY" : "BUY FOR Whitelist"}
-                      </StyledButton>
-                    </s.Container>
                   </>
                 )
                 }
