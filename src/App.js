@@ -334,7 +334,7 @@ function App() {
                     <s.TextTitle
                       style={{ textAlign: "center", color: "var(--accent-text)" }}
                     >
-                      0.02 ETH for Totz
+                      0.025 ETH for Totz
                     </s.TextTitle>
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <StyledButton
